@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gym-Register</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: url('gym2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    form {
+      background: rgba(28, 28, 43, 0.95);
+      padding: 30px 25px;
+      border-radius: 15px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #0ff;
+      font-size: 1.8rem;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2a2a3d;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 2px solid #00faff;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #00faff, #0055ff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #0055ff, #00faff);
+    }
+
+    .requirements {
+      margin-top: 8px;
+    }
+
+    .requirements span {
+      display: block;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .valid {
+      color: #00ff88;
+    }
+
+    .invalid {
+      color: #ff4f4f;
+    }
+
+    .error {
+      color: #ff4f4f;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    @media (max-width: 480px) {
+      form {
+        padding: 25px 20px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      input, button {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .requirements span {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form id="registrationForm">
+    <h2>Register Your Gym Center</h2>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" />
+    <span id="emailError" class="error"></span><br />
+
+    <label for="gym">Gym Center Name:</label>
+    <input type="text" id="gym" />
+    <span id="GymCenterError" class="error"></span><br />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" onkeyup="checkPassword()" />
+    <span id="passwordError" class="error"></span><br />
+
+    <div class="requirements">
+      <span id="length" class="invalid">→ Minimum 6 characters</span>
+      <span id="uppercase" class="invalid">→ At least one uppercase letter (A-Z)</span>
+      <span id="lowercase" class="invalid">→ At least one lowercase letter (a-z)</span>
+      <span id="number" class="invalid">→ At least one number (0-9)</span>
+      <span id="special" class="invalid">→ At least one special character (!@#$%^&*, etc.)</span>
+    </div>
+
+    <label for="location">Location (City/Town):</label>
+    <input type="text" id="location" />
+    <span id="LocationError" class="error"></span><br />
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById("password").value;
+
+      const lengthCheck = password.length >= 6;
+      const uppercaseCheck = /[A-Z]/.test(password);
+      const lowercaseCheck = /[a-z]/.test(password);
+      const numberCheck = /[0-9]/.test(password);
+      const specialCheck = /[^A-Za-z0-9]/.test(password);
+
+      document.getElementById("length").className = lengthCheck ? "valid" : "invalid";
+      document.getElementById("uppercase").className = uppercaseCheck ? "valid" : "invalid";
+      document.getElementById("lowercase").className = lowercaseCheck ? "valid" : "invalid";
+      document.getElementById("number").className = numberCheck ? "valid" : "invalid";
+      document.getElementById("special").className = specialCheck ? "valid" : "invalid";
+    }
+
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      document.getElementById("emailError").innerText = "";
+      document.getElementById("GymCenterError").innerText = "";
+      document.getElementById("passwordError").innerText = "";
+      document.getElementById("LocationError").innerText = "";
+
+      let email = document.getElementById("email").value.trim();
+      let gym = document.getElementById("gym").value.trim();
+      let password = document.getElementById("password").value.trim();
+      let location = document.getElementById("location").value.trim();
+      let hasError = false;
+
+      if (email === "") {
+        document.getElementById("emailError").innerText = "Please enter Email.";
+        hasError = true;
+      }
+      if (gym === "") {
+        document.getElementById("GymCenterError").innerText = "Please enter Gym Center name.";
+        hasError = true;
+      }
+      if (password === "") {
+        document.getElementById("passwordError").innerText = "Please enter Password.";
+        hasError = true;
+      }
+      if (location === "") {
+        document.getElementById("LocationError").innerText = "Please enter location (city/town).";
+        hasError = true;
+      }
+
+      const lengthCheck = password.length >= 6;
+      const uppercaseCheck = /[A-Z]/.test(password);
+      const lowercaseCheck = /[a-z]/.test(password);
+      const numberCheck = /[0-9]/.test(password);
+      const specialCheck = /[^A-Za-z0-9]/.test(password);
+
+      if (!(lengthCheck && uppercaseCheck && lowercaseCheck && numberCheck && specialCheck)) {
+        alert("Password does not meet all the requirements.");
+        return false;
+      }
+
+      if (!hasError) {
+        alert("Registered successfully!");
+        window.location.href = "uploaddata.html";
+      }
+    });
+  </script>
+</body>
+</html>

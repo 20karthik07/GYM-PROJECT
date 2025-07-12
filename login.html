@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('gym2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    form {
+      background: rgba(28, 28, 43, 0.9);
+      padding: 30px 25px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #0ff;
+      font-size: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2a2a3d;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 2px solid #00faff;
+    }
+
+    .error {
+      color: #ff4f4f;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #00faff, #0055ff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #0055ff, #00faff);
+    }
+
+    h4 {
+      margin: 10px 0 0;
+      font-size: 14px;
+    }
+
+    h4 a {
+      text-decoration: none;
+      color: #ff4f4f;
+    }
+
+    h4 a:hover {
+      text-decoration: underline;
+    }
+
+    h6 {
+      text-align: center;
+      font-weight: normal;
+      font-size: 14px;
+      margin-top: 20px;
+      color: #aaa;
+    }
+
+    h6 a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    h6 a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      form {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      input, button {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      h4, h6 {
+        font-size: 13px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <form onsubmit="return validateForm()">
+    <h2>Login</h2>
+
+    <label for="user">Username:</label>
+    <input type="text" id="user" name="username" />
+    <span id="usernameError" class="error"></span>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" />
+    <span id="passwordError" class="error"></span>
+
+    <h4><a href="resetpass.html">Forget Password?</a></h4>
+
+    <button type="submit">Login</button>
+
+    <h6>Don't have an account? <a href="register.html">Register</a></h6>
+  </form>
+
+  <script>
+    function validateForm() {
+      document.getElementById("usernameError").innerText = "";
+      document.getElementById("passwordError").innerText = "";
+
+      let user = document.getElementById("user").value.trim();
+      let pas1 = document.getElementById("password").value.trim();
+      let hasError = false;
+
+      if (user === "") {
+        document.getElementById("usernameError").innerText = "Please enter Username.";
+        hasError = true;
+      }
+      if (pas1 === "") {
+        document.getElementById("passwordError").innerText = "Please enter Password.";
+        hasError = true;
+      }
+
+      return !hasError;
+    }
+  </script>
+</body>
+</html>

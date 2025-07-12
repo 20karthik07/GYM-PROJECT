@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create-New-Password</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('gym2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    form {
+      background: rgba(28, 28, 43, 0.9);
+      padding: 30px 25px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #0ff;
+      font-size: 2rem;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2a2a3d;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 2px solid #00faff;
+    }
+
+    .error {
+      color: #ff4f4f;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .requirements {
+      margin-top: 8px;
+    }
+
+    .requirements span {
+      display: block;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .valid {
+      color: #00ff88;
+    }
+
+    .invalid {
+      color: #ff4f4f;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #00faff, #0055ff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #0055ff, #00faff);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      form {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      input, button {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .requirements span {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <form onsubmit="return validateForm()">
+    <h2>New Password</h2>
+
+    <label for="newpassword">Create New Password:</label>
+    <input type="password" id="newpassword" name="password" onkeyup="checkPassword()" />
+    <span id="newpasswordError" class="error"></span><br />
+
+    <div class="requirements">
+      <span id="length" class="invalid">→ Minimum 6 characters</span>
+      <span id="uppercase" class="invalid">→ At least one uppercase letter (A-Z)</span>
+      <span id="lowercase" class="invalid">→ At least one lowercase letter (a-z)</span>
+      <span id="number" class="invalid">→ At least one number (0-9)</span>
+      <span id="special" class="invalid">→ At least one special character (!@#$%^&*, etc.)</span>
+    </div>
+
+    <button>Change Password</button>
+  </form>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById("newpassword").value;
+
+      const lengthCheck = password.length >= 6;
+      const uppercaseCheck = /[A-Z]/.test(password);
+      const lowercaseCheck = /[a-z]/.test(password);
+      const numberCheck = /[0-9]/.test(password);
+      const specialCheck = /[^A-Za-z0-9]/.test(password);
+
+      document.getElementById("length").className = lengthCheck ? "valid" : "invalid";
+      document.getElementById("uppercase").className = uppercaseCheck ? "valid" : "invalid";
+      document.getElementById("lowercase").className = lowercaseCheck ? "valid" : "invalid";
+      document.getElementById("number").className = numberCheck ? "valid" : "invalid";
+      document.getElementById("special").className = specialCheck ? "valid" : "invalid";
+    }
+
+    function validateForm() {
+      let np = document.getElementById("newpassword").value.trim();
+      document.getElementById("newpasswordError").innerText = "";
+      let hasError = false;
+
+      if (np === "") {
+        document.getElementById("newpasswordError").innerText = "Please enter new Password.";
+        hasError = true;
+      }
+
+      if (hasError) {
+        return false;
+      } else {
+        alert("Password was changed successfully!");
+        return true;
+      }
+    }
+  </script>
+</body>
+</html>

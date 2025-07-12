@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset-password</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('gym2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    form {
+      background: rgba(28, 28, 43, 0.9);
+      padding: 30px 25px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #0ff;
+      font-size: 1.9rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2a2a3d;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 2px solid #00faff;
+    }
+
+    .error {
+      color: #ff4f4f;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #00faff, #0055ff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #0055ff, #00faff);
+    }
+
+    .otpbtn {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      form {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      input, button {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form onsubmit="return false;">
+    <h2>Verify Email To Change Password</h2>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" />
+    <span id="emailError" class="error"></span>
+
+    <button type="button" onclick="sendOtp()" class="otpbtn" id="otpbutton">Send OTP</button>
+
+    <label for="otp">Enter OTP</label>
+    <input type="text" id="otp" inputmode="numeric" />
+    <span id="otpError" class="error"></span>
+
+    <button type="button" onclick="verifyOtp()">Create New Password</button>
+  </form>
+
+  <script>
+    function sendOtp() {
+      const email = document.getElementById("email").value.trim();
+      const emailError = document.getElementById("emailError");
+      emailError.innerText = "";
+
+      if (email === "") {
+        emailError.innerText = "Enter email";
+      } else {
+        alert("OTP sent to " + email);
+        document.getElementById("otpbutton").innerText = "Resend OTP";
+      }
+    }
+
+    function verifyOtp() {
+      const otp = document.getElementById("otp").value.trim();
+      const otpError = document.getElementById("otpError");
+      otpError.innerText = "";
+
+      if (otp === "") {
+        otpError.innerText = "Enter OTP";
+      } else {
+        window.location.href = "createnewpass.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
