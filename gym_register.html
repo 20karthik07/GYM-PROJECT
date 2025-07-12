@@ -203,6 +203,10 @@
         hasError = true;
       }
 
+      if(hasError){
+        return false;
+      }
+
       const lengthCheck = password.length >= 6;
       const uppercaseCheck = /[A-Z]/.test(password);
       const lowercaseCheck = /[a-z]/.test(password);
@@ -214,7 +218,7 @@
         return false;
       }
 
-      if (!hasError) {
+      else {
         alert("Registered successfully!");
         window.location.href = "uploaddata.html";
       }
