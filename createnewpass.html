@@ -170,12 +170,25 @@
         hasError = true;
       }
 
+      const password = document.getElementById("newpassword").value;
+
+      const lengthCheck = password.length >= 6;
+      const uppercaseCheck = /[A-Z]/.test(password);
+      const lowercaseCheck = /[a-z]/.test(password);
+      const numberCheck = /[0-9]/.test(password);
+      const specialCheck = /[^A-Za-z0-9]/.test(password);
+
       if (hasError) {
         return false;
-      } else {
-        alert("Password was changed successfully!");
-        return true;
       }
+      if(!(lengthCheck && uppercaseCheck && lowercaseCheck && numberCheck && specialCheck)){
+        alert("Password was not meet all requirements");
+        return false;
+      } 
+      
+      alert("Password was changed successfully!");
+      return true;
+      
     }
   </script>
 </body>
