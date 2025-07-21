@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IronCore Fitness</title>
+
+  <!-- Font Awesome CDN for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8fafc;
+      color: #1f2937;
+    }
+
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #93c5fd;
+    }
+
+    .hero-section {
+      background: url('https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 60px;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      margin: 20px 0;
+    }
+
+    .btn {
+      background-color: #ef4444;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #dc2626;
+    }
+
+    .section {
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #1e3a8a;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 280px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card button {
+      width: 100%;
+      padding: 15px;
+      background-color: #1e3a8a;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #3b82f6;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form input, form textarea {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    form button {
+      padding: 12px;
+      font-size: 18px;
+      background-color: #1e3a8a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background-color: #3b82f6;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+    }
+
+    .contact-info div {
+      text-align: left;
+    }
+
+    .contact-info p {
+      margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      nav a {
+        margin: 10px;
+      }
+
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">🏋️ FitStack</div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="User_interface.html">Dashboard</a>
+      <a href="trainer_profile (1).html">Trainer</a>
+      <a href="membership.html">Membership</a>
+      <a href="profile.html">Profile</a>
+      <a href="message.html">Message</a>
+      <a href="#Schedule">Schedule</a>
+      <a href="#Feedback">Feedback</a>
+      <a href="#BMI Calculator">BMI</a>
+      <a href="#Contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero-section">
+    <div class="hero-content">
+      <h1>Push Your Limits</h1>
+      <p>Join the FitStack Gym Where Transformation Happens</p>
+      <a href="#view prices" class="btn">View Plans</a>
+    </div>
+  </section>
+
+  <section id="services" class="section reveal">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card">
+        <a href="#personal Trainer">
+          <img src="https://www.fitnessmatters.org/wp-content/uploads/2021/04/Ace-certified-personal-trainer.jpg">
+        </a>
+        <button>Personal Training</button>
+      </div>
+
+      <div class="card">
+        <a href="#Nutrition">
+          <img src="https://www.shutterstock.com/image-photo/composition-assorted-organic-food-products-260nw-1377446852.jpg" />
+        </a>
+        <button>Nutrition & Balanced Diet</button>
+      </div>
+
+      <div class="card">
+        <a href="#Zumba">
+          <img src="https://res.cloudinary.com/purnesh/image/upload/w_1000,f_auto,q_auto:eco,c_limit/capture00123.jpg">
+        </a>
+        <button>Zumba</button>
+      </div>
+
+      <div class="card">
+        <a href="#Cardio">
+          <img src="https://www.endomondo.com/wp-content/uploads/2024/02/best-cardio-for-weight-loss-img.jpg" />
+        </a>
+        <button>Cardio</button>
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="cards">
+      <div class="card">
+        <a href="#yoga">
+          <img src="https://www.dabur.com/Blogs/Doshas/Importance%20and%20Benefits%20of%20Yoga%201020x450.jpg" />
+        </a>
+        <button>Yoga</button>
+      </div>
+
+      <div class="card">
+        <a href="#Aerobic">
+          <img src="https://3.imimg.com/data3/GO/KO/MY-9967418/aerobics-500x500.jpg" />
+        </a>
+        <button>Aerobic</button>
+      </div>
+
+      <div class="card">
+        <a href="#Meditation">
+          <img src="https://www.fastandup.in/nutrition-world/wp-content/uploads/2023/05/Benefits-of-Meditation-and-Yoga.jpg" />
+        </a>
+        <button>Meditation</button>
+      </div>
+
+      <div class="card">
+        <a href="#Cross Fit">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.oFeplKNw8Xuz4GnCZnwExQHaEu?cb=thvnextc2&rs=1&pid=ImgDetMain&o=7&rm=3" />
+        </a>
+        <button>Cross Fit</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section reveal">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{10}">
+      <textarea placeholder="Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+      <div>
+        <p><i class="fas fa-map-marker-alt"></i> SRKR Bhimavaram</p>
+        <p><i class="fas fa-envelope"></i> FitStack@gmail.com</p>
+        <p><i class="fas fa-phone-alt"></i> +91XXXXXXXXXX</p>
+      </div>
+
+      <div>
+        <p><i class="fab fa-instagram"></i> _FitStack_</p>
+        <p><i class="fab fa-whatsapp"></i> +91XXXXXXXXXX</p>
+        <p><i class="fab fa-linkedin"></i> Fitstack</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

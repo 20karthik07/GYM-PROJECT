@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meghana's Profile | FitStack</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 15px;
+    }
+
+    .profile-container {
+      max-width: 800px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      padding: 30px;
+      color: #1e293b;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .profile-card {
+      text-align: center;
+    }
+
+    .avatar img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #3b82f6;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .role {
+      font-size: 1.1rem;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .info-section {
+      text-align: left;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+      animation: slideUp 0.6s ease;
+    }
+
+    .info-section p {
+      font-size: 1rem;
+      margin: 10px 0;
+      border-bottom: 1px dashed #cbd5e1;
+      padding-bottom: 5px;
+    }
+
+    .info-section p:last-child {
+      border-bottom: none;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #3b82f6;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      .profile-container {
+        padding: 20px 15px;
+      }
+
+      .info-section {
+        font-size: 0.95rem;
+      }
+
+      .avatar img {
+        width: 120px;
+        height: 120px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-card">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/150?img=68" alt="Meghana">
+      </div>
+      <h1>Meghana</h1>
+      <p class="role">Software Engineer & Fitness Enthusiast</p>
+
+      <div class="info-section">
+        <p><strong>Age:</strong> 25</p>
+        <p><strong>BMI:</strong> 22.4</p>
+        <p><strong>Phone:</strong> +91 9876543210</p>
+        <p><strong>Email:</strong> meghana@example.com</p>
+        <p><strong>Address:</strong> Hyderabad</p>
+        <p><strong>Working Address:</strong> Infosys Ltd, Hyderabad</p>
+        <p><strong>Preferred Time:</strong> Morning 6 AM</p>
+        <p><strong>Diet Preference:</strong> High-protein vegetarian</p>
+        <p><strong>Water Intake:</strong> 3L/day</p>
+        <p><strong>Sleep Routine:</strong> 8 hrs/night</p>
+        <p><strong>Goals:</strong> Weight Loss & Strength</p>
+        <p><strong>Favorite Workout:</strong> Zumba</p>
+        <p><strong>Skills:</strong> Cardio, Yoga, Pilates</p>
+        <p><strong>Steps/Day:</strong> Avg. 8500</p>
+        <p><strong>Rest Days:</strong> Sunday</p>
+        <p><strong>Trainer:</strong> Ravi Teja</p>
+        <p><strong>Upcoming Session:</strong> CrossFit, Friday 6AM</p>
+        <p><strong>Next Challenge:</strong> 10K Step Streak</p>
+        <p><strong>Membership:</strong> Gold Plan (Expires Dec 2025)</p>
+        <p><strong>Achievements:</strong> Lost 6kg in 3 months 💪</p>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <a href="./1.html" class="back-button">← Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>

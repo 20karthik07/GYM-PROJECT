@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trainer Profile | FitStack</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #cfd9df);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    .slidebar {
+      width: 220px;
+      background-color: #1e293b;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .slidebar h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #facc15;
+    }
+
+    .slidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .slidebar ul li {
+      margin-bottom: 15px;
+    }
+
+    .slidebar ul li a {
+      display: block;
+      text-decoration: none;
+      padding: 12px 18px;
+      color: white;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .slidebar ul li a:hover,
+    .slidebar ul li a.active {
+      background-color: #facc15;
+      color: #1e293b;
+      font-weight: bold;
+    }
+
+    .tab {
+      margin-left: 240px;
+      width: calc(100% - 260px);
+      padding: 40px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    h2 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #1e293b;
+    }
+
+    .trainer-profile-details {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .trainer-img {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .trainer-img img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .trainer-info {
+      flex: 2;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .trainer-info h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #1e3a8a;
+    }
+
+    .trainer-info p, .trainer-info ul {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .trainer-info ul {
+      padding-left: 20px;
+      margin: 10px 0 20px;
+    }
+
+    .trainer-info a {
+      color: #0ea5e9;
+      text-decoration: none;
+    }
+
+    .trainer-info a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      margin-right: 15px;
+      font-size: 24px;
+      color: #475569;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #1d4ed8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* DARK MODE */
+    body.dark-mode {
+      background: #111827;
+      color: #fff;
+    }
+
+    body.dark-mode .slidebar {
+      background-color: #0f172a;
+    }
+
+    body.dark-mode .tab {
+      background-color: #1e293b;
+    }
+
+    body.dark-mode h2,
+    body.dark-mode .trainer-info h3,
+    body.dark-mode .trainer-info p,
+    body.dark-mode .trainer-info li {
+      color: #e2e8f0;
+    }
+
+    body.dark-mode .trainer-info {
+      background: rgba(30, 41, 59, 0.9);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .trainer-info a {
+      color: #60a5fa;
+    }
+
+    body.dark-mode .social-icons a {
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .social-icons a:hover {
+      color: #3b82f6;
+    }
+
+    @media (max-width: 768px) {
+      .slidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+
+      .tab {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+      }
+
+      .trainer-profile-details {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="slidebar">
+    <h2>🏋️ FitStack</h2>
+    <ul>
+      <li><a href="./home.html">Home</a></li>
+      <li><a href="./User_interface.html">Dashboard</a></li>
+      <li><a href="./trainer_profile.html" class="active">Trainer</a></li>
+      <li><a href="./membership.html">Membership</a></li>
+      <li><a href="./profile.html">Profile</a></li>
+      <li><a href="./message.html">Message</a></li>
+    </ul>
+  </aside>
+
+  <section id="profile" class="tab">
+    <h2>Trainer Profile</h2>
+    <div class="trainer-profile-details">
+      
+      <div class="trainer-img">
+        <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ravi Teja - Trainer">
+      </div>
+
+      <div class="trainer-info">
+        <h3>Ravi Teja</h3>
+        <p><strong>Certification:</strong> ISSA, ACE Nutrition, CPR & AED Certified</p>
+        <p><strong>Experience:</strong> 8+ years of personal & group fitness coaching</p>
+
+        <p><strong>Specializations:</strong></p>
+        <ul>
+          <li>Strength Training, Weight Loss, HIIT, Flexibility</li>
+          <li>Posture Correction, Rehabilitation, Sports Fitness</li>
+          <li>Yoga & Mindfulness Training</li>
+        </ul>
+
+        <p><strong>Education:</strong> B.Sc. in Sports Science & Kinesiology</p>
+
+        <p><strong>Achievements:</strong></p>
+        <ul>
+          <li>250+ client transformations</li>
+          <li>Trainer of the Year 2023 (FitIndia Awards)</li>
+        </ul>
+
+        <p><strong>Contact:</strong><br>
+          📧 <a href="mailto:ravi.teja@fitcoach.com">ravi.teja@fitcoach.com</a><br>
+          📱 +91-98765-43210
+        </p>
+
+        <div class="social-icons">
+          <a href="https://instagram.com/ravi_fitcoach" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/ravi-fitness" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://facebook.com/ravi.fitness" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Toggle dark mode with 'd' key
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "d") {
+        document.body.classList.toggle("dark-mode");
+      }
+    });
+  </script>
+
+</body>
+</html>

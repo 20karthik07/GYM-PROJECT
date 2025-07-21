@@ -22,44 +22,61 @@
       align-items: center;
       min-height: 100vh;
       padding: 20px;
+      backdrop-filter: blur(6px);
     }
 
     form {
-      background: rgba(28, 28, 43, 0.9);
-      padding: 30px 25px;
-      border-radius: 15px;
+      background: rgba(15, 15, 30, 0.95);
+      padding: 40px 35px;
+      border-radius: 25px;
       width: 100%;
-      max-width: 400px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      max-width: 450px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     h2 {
       text-align: center;
       margin-bottom: 30px;
-      color: #0ff;
-      font-size: 1.9rem;
+      color: #00faff;
+      font-size: 2.1rem;
+      letter-spacing: 1.5px;
     }
 
     label {
       display: block;
-      margin-top: 15px;
-      margin-bottom: 5px;
+      margin-top: 20px;
+      margin-bottom: 6px;
       font-weight: 600;
-      color: #ccc;
+      color: #e0e0e0;
     }
 
     input {
       width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #2a2a3d;
+      padding: 12px 14px;
+      border: 1px solid #2c2c4a;
+      border-radius: 12px;
+      background: #1b1b30;
       color: #fff;
       font-size: 15px;
+      transition: 0.3s ease;
     }
 
     input:focus {
-      outline: 2px solid #00faff;
+      outline: none;
+      border-color: #00faff;
+      background-color: #252542;
+      box-shadow: 0 0 8px #00faff55;
     }
 
     .error {
@@ -73,30 +90,36 @@
       padding: 12px;
       font-size: 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       background: linear-gradient(135deg, #00faff, #0055ff);
       color: white;
       font-weight: bold;
       cursor: pointer;
       width: 100%;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     button:hover {
-      background: linear-gradient(135deg, #0055ff, #00faff);
+      transform: scale(1.03);
+      box-shadow: 0 0 12px #00faffaa;
     }
 
-    #btn{
+    #btn {
       margin-top: 20px;
       padding: 12px;
       font-size: 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       background: grey;
       color: white;
       font-weight: bold;
       cursor: pointer;
       width: 100%;
+      transition: 0.3s;
+    }
+
+    #btn.active {
+      background: linear-gradient(135deg, #00faff, #0055ff);
     }
 
     .otpbtn {
@@ -104,17 +127,17 @@
       width: 100%;
     }
 
-    /* Responsive adjustments */
     @media (max-width: 480px) {
       form {
-        padding: 20px;
+        padding: 30px;
       }
 
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
 
-      input, button {
+      input,
+      button {
         font-size: 14px;
         padding: 10px;
       }
@@ -153,25 +176,26 @@
       }
     }
 
-    function enteraninput(){
-      let otp1=document.getElementById("otp").value.trim();
+    function enteraninput() {
+      let otp1 = document.getElementById("otp").value.trim();
       const btn1 = document.getElementById("btn");
 
-      if(otp1 !== "" && otp1.length===6){
-        btn1.style.background="linear-gradient(135deg, #00faff, #0055ff)";
+      if (otp1 !== "" && otp1.length === 6) {
+        btn1.classList.add("active");
+      } else {
+        btn1.classList.remove("active");
       }
     }
 
     function verifyOtp() {
       const otp = document.getElementById("otp").value.trim();
       const otpError = document.getElementById("otpError");
-      const btn = document.getElementById("btn");
       otpError.innerText = "";
-    
-      if (otp === "" && otp.length!==6) {
-        otpError.innerText = "Please enter the 6 didit OTP";
+
+      if (otp === "" || otp.length !== 6) {
+        otpError.innerText = "Please enter the 6 digit OTP";
       } else {
-        window.location.href="createnewpass.html";
+        window.location.href = "createnewpass.html";
       }
     }
   </script>

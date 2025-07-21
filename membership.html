@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitStack | Membership</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #cfd9df);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* Sidebar Style */
+    .slidebar {
+      width: 220px;
+      background-color: #1e293b;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .slidebar h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #facc15;
+    }
+
+    .slidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .slidebar ul li {
+      margin-bottom: 15px;
+    }
+
+    .slidebar ul li a {
+      display: block;
+      text-decoration: none;
+      padding: 12px 18px;
+      color: white;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .slidebar ul li a:hover,
+    .slidebar ul li a.active {
+      background-color: #facc15;
+      color: #1e293b;
+      font-weight: bold;
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+      width: calc(100% - 260px);
+    }
+
+    header h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #1e293b;
+    }
+
+    .membership-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      width: 320px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .badge {
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      background: #3b82f6;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .highlight {
+      background: #facc15;
+      color: #1e293b;
+    }
+
+    .tag {
+      font-size: 12px;
+      margin-left: 8px;
+      background: #fde68a;
+      padding: 3px 8px;
+      border-radius: 10px;
+    }
+
+    .card h2 {
+      font-size: 28px;
+      margin: 20px 0 10px;
+      color: #0f172a;
+    }
+
+    .card small {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .duration {
+      font-size: 15px;
+      margin-bottom: 20px;
+      color: #475569;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 30px;
+    }
+
+    .card ul li {
+      padding: 8px 0;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #1e40af;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #3b82f6;
+    }
+
+    @media screen and (max-width: 768px) {
+      .slidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+
+      .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+      }
+
+      .membership-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <aside class="slidebar">
+    <h2>🏋️ FitStack</h2>
+    <ul>
+      <li><a href="./home.html">Home</a></li>
+      <li><a href="./User_interface.html">Dashboard</a></li>
+      <li><a href="./trainer_profile (1).html">Trainer</a></li>
+      <li><a href="./membership.html" class="active">Membership</a></li>
+      <li><a href="./profile.html">Profile</a></li>
+      <li><a href="./message.html">Message</a></li>
+    </ul>
+  </aside>
+
+  <div class="main">
+    <header>
+      <h1>Choose Your Membership Plan</h1>
+    </header>
+
+    <div class="membership-container">
+      <!-- BASIC PLAN -->
+      <div class="card plan-card basic">
+        <span class="badge">Basic</span>
+        <h2>₹1000 <small>/ month</small></h2>
+        <p class="duration">Duration: 1 Month</p>
+        <ul>
+          <li>🏋️ Full Gym Access</li>
+          <li>🕒 Flexible Gym Timings</li>
+          <li>🔒 Locker Facility</li>
+          <li>📶 Free Wi-Fi Access</li>
+          <li>🚿 Clean Showers</li>
+          <li>📱 Mobile App Access</li>
+          <li>🧼 Sanitized Equipment</li>
+        </ul>
+        <button class="btn" data-plan="Basic">Subscribe</button>
+      </div>
+
+      <!-- PREMIUM PLAN -->
+      <div class="card plan-card premium">
+        <span class="badge highlight">Premium <span class="tag">Best Value</span></span>
+        <h2>₹1799 <small>/ month</small></h2>
+        <p class="duration">Duration: 3 Months</p>
+        <ul>
+          <li>🧘 Yoga & Zumba Classes</li>
+          <li>👤 Personal Trainer</li>
+          <li>📆 Weekly Progress Review</li>
+          <li>💬 Diet & Workout Consultation</li>
+          <li>🔔 Class Reminders</li>
+          <li>📊 Body Composition Reports</li>
+          <li>🎧 Guided Meditation Sessions</li>
+        </ul>
+        <button class="btn" data-plan="Premium">Subscribe</button>
+      </div>
+
+      <!-- ELITE PLAN -->
+      <div class="card plan-card elite">
+        <span class="badge">Elite</span>
+        <h2>₹2499 <small>/ month</small></h2>
+        <p class="duration">Duration: 6 Months</p>
+        <ul>
+          <li>🥗 Personalized Nutrition Plan</li>
+          <li>🏆 Dedicated Wellness Coach</li>
+          <li>🛏️ Recovery + Sleep Tracking</li>
+          <li>📊 Body Composition Analysis</li>
+          <li>🎯 Monthly Goal Review</li>
+          <li>🧪 Blood Pressure & Sugar Check</li>
+          <li>📱 24/7 Chat Support with Trainer</li>
+        </ul>
+        <button class="btn" data-plan="Elite">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="membership.js"></script>
+</body>
+</html>

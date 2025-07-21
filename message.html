@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitStack | Chat</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* SIDEBAR MATCHING MEMBERSHIP PAGE */
+    .slidebar {
+      width: 220px;
+      background-color: #1e293b;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .slidebar h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #facc15;
+    }
+
+    .slidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .slidebar ul li {
+      margin-bottom: 15px;
+    }
+
+    .slidebar ul li a {
+      display: block;
+      text-decoration: none;
+      padding: 12px 18px;
+      color: white;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .slidebar ul li a:hover,
+    .slidebar ul li a.active {
+      background-color: #facc15;
+      color: #1e293b;
+      font-weight: bold;
+    }
+
+    /* CHAT SECTION */
+    .chat-container {
+      flex: 1;
+      display: flex;
+      margin-left: 220px;
+      height: 100vh;
+      width: calc(100% - 220px);
+    }
+
+    .chat-sidebar {
+      width: 280px;
+      background: #f1f5f9;
+      padding: 20px;
+      border-right: 1px solid #cbd5e1;
+      overflow-y: auto;
+    }
+
+    .chat-sidebar h3 {
+      margin-bottom: 15px;
+      color: #1e293b;
+    }
+
+    .contact {
+      padding: 10px 15px;
+      background: white;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .contact:hover,
+    .contact.active {
+      background: #e0f2fe;
+      font-weight: 500;
+    }
+
+    .chat-window {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+    }
+
+    .chat-header {
+      padding: 20px;
+      background: #e2e8f0;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .chat-header span {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .chat-header small {
+      color: #64748b;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 12px 16px;
+      border-radius: 20px;
+      font-size: 15px;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .sent {
+      align-self: flex-end;
+      background: #38bdf8;
+      color: white;
+      border-bottom-right-radius: 0;
+    }
+
+    .received {
+      align-self: flex-start;
+      background: #f1f5f9;
+      color: #1e293b;
+      border-bottom-left-radius: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 15px 20px;
+      background: #f8fafc;
+      border-top: 1px solid #cbd5e1;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 12px 16px;
+      font-size: 15px;
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .chat-input button {
+      padding: 12px 20px;
+      margin-left: 10px;
+      background: #0ea5e9;
+      border: none;
+      color: white;
+      font-weight: 600;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .chat-input button:hover {
+      background: #0284c7;
+    }
+
+    @media screen and (max-width: 768px) {
+      .slidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+
+      .chat-container {
+        margin-left: 0;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .chat-sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="slidebar">
+    <h2>🏋️ FitStack</h2>
+    <ul>
+      <li><a href="./home.html">Home</a></li>
+      <li><a href="./User_interface.html">Dashboard</a></li>
+      <li><a href="./trainer_profile.html">Trainer</a></li>
+      <li><a href="./membership.html">Membership</a></li>
+      <li><a href="./profile.html">Profile</a></li>
+      <li><a href="./message.html" class="active">Message</a></li>
+    </ul>
+  </aside>
+
+  <!-- Chat Section -->
+  <section id="chat" class="chat-container">
+    
+    <!-- Contacts List -->
+    <div class="chat-sidebar">
+      <h3>Trainers</h3>
+      <div class="contact active" onclick="loadChat('Lakshmi')">Lakshmi</div>
+      <div class="contact" onclick="loadChat('Harika')">Harika</div>
+      <div class="contact" onclick="loadChat('Divya')">Divya</div>
+      <div class="contact" onclick="loadChat('Srinivas')">Srinivas</div>
+      <div class="contact" onclick="loadChat('Rajesh')">Rajesh</div>
+      <div class="contact" onclick="loadChat('Vikram')">Vikram</div>
+      <div class="contact" onclick="loadChat('Meghana')">Meghana</div>
+    </div>
+
+    <!-- Message Area -->
+    <div class="chat-window">
+      <div class="chat-header">
+        <span id="chatName">Lakshmi</span><br>
+        <small>last seen 5 minutes ago</small>
+      </div>
+
+      <div id="messages" class="chat-messages">
+        <div class="message received">Hi! How can I help you today?</div>
+        <div class="message sent">I want a new workout plan for cardio.</div>
+      </div>
+
+      <div class="chat-input">
+        <input id="messageInput" type="text" placeholder="Type a message" />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const messageText = input.value.trim();
+      if (messageText === '') return;
+
+      const messages = document.getElementById('messages');
+      const message = document.createElement('div');
+      message.className = 'message sent';
+      message.innerText = messageText;
+      messages.appendChild(message);
+      input.value = '';
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function loadChat(name) {
+      document.getElementById('chatName').innerText = name;
+      document.querySelectorAll('.contact').forEach(c => c.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('messages').innerHTML = `
+        <div class="message received">Hi! I'm ${name}. How can I help you today?</div>
+      `;
+    }
+  </script>
+</body>
+</html>

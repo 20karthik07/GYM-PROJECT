@@ -13,7 +13,11 @@
     }
 
     body {
-      background: url('gym2.jpg') no-repeat center center fixed;
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
+        ), 
+        url('gym2.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
@@ -25,27 +29,34 @@
     }
 
     form {
-      background: rgba(28, 28, 43, 0.9); /* Slight transparency */
-      padding: 30px 25px;
-      border-radius: 15px;
+      background: rgba(28, 28, 43, 0.95);
+      padding: 35px 30px;
+      border-radius: 18px;
       width: 100%;
-      max-width: 400px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      max-width: 430px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 25px;
-      color: #0ff;
+      margin-bottom: 30px;
+      color: #00faff;
       font-size: 2rem;
+      letter-spacing: 1px;
     }
 
     label {
       display: block;
-      margin-top: 15px;
-      margin-bottom: 5px;
+      margin-top: 18px;
+      margin-bottom: 6px;
       font-weight: 600;
-      color: #ccc;
+      color: #ddd;
     }
 
     input {
@@ -56,20 +67,23 @@
       background: #2a2a3d;
       color: #fff;
       font-size: 15px;
+      transition: all 0.3s ease;
     }
 
     input:focus {
-      outline: 2px solid #00faff;
+      outline: none;
+      box-shadow: 0 0 0 2px #00faff;
     }
 
     .requirements {
-      margin-top: 5px;
+      margin-top: 10px;
     }
 
     .requirements span {
       display: block;
       font-size: 13px;
       margin-top: 4px;
+      transition: color 0.2s ease;
     }
 
     .valid {
@@ -87,7 +101,7 @@
     }
 
     button {
-      margin-top: 20px;
+      margin-top: 25px;
       width: 100%;
       padding: 12px;
       font-size: 16px;
@@ -97,33 +111,35 @@
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
+      transition: all 0.3s ease;
     }
 
     button:hover {
       background: linear-gradient(135deg, #0055ff, #00faff);
+      box-shadow: 0 0 15px #00faff;
     }
 
     h6 {
       text-align: center;
       font-size: 14px;
-      margin-top: 20px;
+      margin-top: 22px;
       color: #aaa;
     }
 
     h6 a {
       color: #0ff;
       text-decoration: none;
+      font-weight: 500;
     }
 
     h6 a:hover {
       text-decoration: underline;
     }
 
-    /* Responsive adjustments */
     @media (max-width: 480px) {
       form {
-        padding: 20px;
+        padding: 25px;
       }
 
       h2 {
@@ -143,37 +159,37 @@
         font-size: 13px;
       }
     }
-
   </style>
 </head>
+
 <body>
 
   <form onsubmit="return validateForm()">
     <h2>Register</h2>
 
-    <label for="email">Email: </label>
+    <label for="email">Email:</label>
     <input type="email" id="email" name="email">
-    <span id="emailError" class="error"></span><br>
+    <span id="emailError" class="error"></span>
 
-    <label for="user">Create Username: </label>
+    <label for="user">Create Username:</label>
     <input type="text" id="user" name="username">
-    <span id="usernameError" class="error"></span><br>
+    <span id="usernameError" class="error"></span>
 
     <label for="password">Create Password:</label>
     <input type="password" id="password" name="password" onkeyup="checkPassword()">
-    <span id="passwordError" class="error"></span><br>
+    <span id="passwordError" class="error"></span>
 
     <div class="requirements">
       <span id="length" class="invalid">→ Minimum 6 characters</span>
       <span id="uppercase" class="invalid">→ At least one uppercase letter (A–Z)</span>
       <span id="lowercase" class="invalid">→ At least one lowercase letter (a–z)</span>
       <span id="number" class="invalid">→ At least one number (0–9)</span>
-      <span id="special" class="invalid">→ At least one special character (!@#$%^&*, etc.)</span>
+      <span id="special" class="invalid">→ At least one special character (!@#$%^&*)</span>
     </div>
 
-    <label for="conpass">Confirm Password</label>
+    <label for="conpass">Confirm Password:</label>
     <input type="password" id="conpass" name="confirmpassword">
-    <span id="confirmError" class="error"></span><br>
+    <span id="confirmError" class="error"></span>
     <span id="matchMessage" class="error"></span>
 
     <button type="submit">Register</button>
@@ -248,7 +264,8 @@
       }
 
       alert("Registered successfully!");
-      return true;
+      window.location.href = "home.html";
+      return false;
     }
   </script>
 

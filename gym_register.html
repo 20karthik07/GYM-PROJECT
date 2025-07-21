@@ -126,17 +126,13 @@
 <body>
 
   <form id="registrationForm">
-    <h2>Register Your Gym Center</h2>
+    <h2>Register as a trainer</h2>
 
     <label for="email">Email:</label>
     <input type="email" id="email" />
     <span id="emailError" class="error"></span><br />
 
-    <label for="gym">Gym Center Name:</label>
-    <input type="text" id="gym" />
-    <span id="GymCenterError" class="error"></span><br />
-
-    <label for="password">Password:</label>
+    <label for="password">Create Password:</label>
     <input type="password" id="password" onkeyup="checkPassword()" />
     <span id="passwordError" class="error"></span><br />
 
@@ -176,22 +172,16 @@
       event.preventDefault();
 
       document.getElementById("emailError").innerText = "";
-      document.getElementById("GymCenterError").innerText = "";
       document.getElementById("passwordError").innerText = "";
       document.getElementById("LocationError").innerText = "";
 
       let email = document.getElementById("email").value.trim();
-      let gym = document.getElementById("gym").value.trim();
       let password = document.getElementById("password").value.trim();
       let location = document.getElementById("location").value.trim();
       let hasError = false;
 
       if (email === "") {
         document.getElementById("emailError").innerText = "Please enter Email.";
-        hasError = true;
-      }
-      if (gym === "") {
-        document.getElementById("GymCenterError").innerText = "Please enter Gym Center name.";
         hasError = true;
       }
       if (password === "") {
@@ -220,7 +210,6 @@
 
       else {
         alert("Registered successfully!");
-        window.location.href = "uploaddata.html";
       }
     });
   </script>

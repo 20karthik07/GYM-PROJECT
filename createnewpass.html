@@ -13,7 +13,8 @@
     }
 
     body {
-      background: url('gym2.jpg') no-repeat center center fixed;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('gym2.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
@@ -25,56 +26,75 @@
     }
 
     form {
-      background: rgba(28, 28, 43, 0.9);
-      padding: 30px 25px;
-      border-radius: 15px;
+      background: rgba(40, 40, 60, 0.95);
+      padding: 35px 30px;
+      border-radius: 18px;
       width: 100%;
-      max-width: 400px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      max-width: 420px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     h2 {
       text-align: center;
       margin-bottom: 30px;
-      color: #0ff;
-      font-size: 2rem;
+      color: #00faff;
+      font-size: 2.2rem;
+      text-shadow: 0 0 8px #00faff55;
     }
 
     label {
       display: block;
-      margin: 15px 0 5px;
+      margin: 15px 0 6px;
       font-weight: 600;
       color: #ccc;
+      font-size: 15px;
     }
 
     input {
       width: 100%;
       padding: 12px;
-      border: none;
+      border: 1px solid #444;
       border-radius: 8px;
       background: #2a2a3d;
       color: #fff;
       font-size: 15px;
+      transition: all 0.3s ease;
     }
 
     input:focus {
-      outline: 2px solid #00faff;
+      outline: none;
+      border-color: #00faff;
+      box-shadow: 0 0 8px #00faff80;
     }
 
     .error {
       color: #ff4f4f;
       font-size: 13px;
-      margin-top: 3px;
+      margin-top: 4px;
     }
 
     .requirements {
-      margin-top: 8px;
+      margin-top: 10px;
+      padding-left: 5px;
     }
 
     .requirements span {
       display: block;
       font-size: 13px;
       margin-top: 4px;
+      padding-left: 10px;
     }
 
     .valid {
@@ -86,9 +106,9 @@
     }
 
     button {
-      margin-top: 20px;
+      margin-top: 25px;
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       font-size: 16px;
       border: none;
       border-radius: 8px;
@@ -96,21 +116,23 @@
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00faff40;
     }
 
     button:hover {
       background: linear-gradient(135deg, #0055ff, #00faff);
+      box-shadow: 0 0 15px #00faff99;
     }
 
     /* Responsive tweaks */
     @media (max-width: 480px) {
       form {
-        padding: 20px;
+        padding: 25px;
       }
 
       h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
 
       input, button {
@@ -140,7 +162,7 @@
       <span id="special" class="invalid">→ At least one special character (!@#$%^&*, etc.)</span>
     </div>
 
-    <button>Change Password</button>
+    <button type="submit">Change Password</button>
   </form>
 
   <script>
@@ -170,25 +192,23 @@
         hasError = true;
       }
 
-      const password = document.getElementById("newpassword").value;
+      const lengthCheck = np.length >= 6;
+      const uppercaseCheck = /[A-Z]/.test(np);
+      const lowercaseCheck = /[a-z]/.test(np);
+      const numberCheck = /[0-9]/.test(np);
+      const specialCheck = /[^A-Za-z0-9]/.test(np);
 
-      const lengthCheck = password.length >= 6;
-      const uppercaseCheck = /[A-Z]/.test(password);
-      const lowercaseCheck = /[a-z]/.test(password);
-      const numberCheck = /[0-9]/.test(password);
-      const specialCheck = /[^A-Za-z0-9]/.test(password);
+      if (hasError) return false;
 
-      if (hasError) {
+      if (!(lengthCheck && uppercaseCheck && lowercaseCheck && numberCheck && specialCheck)) {
+        alert("Password does not meet all the requirements.");
         return false;
       }
-      if(!(lengthCheck && uppercaseCheck && lowercaseCheck && numberCheck && specialCheck)){
-        alert("Password was not meet all requirements");
-        return false;
-      } 
-      
+
       alert("Password was changed successfully!");
+      // Redirect to login or home page if needed
+      // window.location.href = "login.html";
       return true;
-      
     }
   </script>
 </body>
